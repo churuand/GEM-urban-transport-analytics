@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: raw_gtfs
+    schema: raw
+    tables:
+      - name: gtfs_feeds
+      - name: gtfs_agency
+      - name: gtfs_calendar
+      - name: gtfs_calendar_dates
+      - name: gtfs_routes
+      - name: gtfs_stop_times
+      - name: gtfs_stops
+      - name: gtfs_trips
+
+models:
+  - name: stg_gtfs_feeds
+    columns:
+      - name: feed_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_gtfs_routes
+    columns:
+      - name: route_key
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_gtfs_trips
+    columns:
+      - name: trip_key
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_gtfs_stops
+    columns:
+      - name: stop_key
+        data_tests:
+          - not_null
+          - unique
